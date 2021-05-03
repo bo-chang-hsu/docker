@@ -26,9 +26,6 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=密碼" -p 1433:1433 --name 
 ```
 docker ps
 ```
-  - 大功告成
-	CONTAINER ID   IMAGE                          COMMAND                  CREATED         STATUS         PORTS                              NAMES
-	eadc97201da6   microsoft/mssql-server-linux   "/opt/mssql/bin/sqls…"   2 minutes ago   Up 2 minutes   1433/tcp, 0.0.0.0:1533->1533/tcp   sql-server
 
 - 執行Command在一個執行中的Container：
 ```
@@ -51,30 +48,30 @@ sqlcmd -S localhost -U SA -P 'password'
 
 ___
 
-#錯誤排除
-1.確保未使用您的端口，請轉至資源監視器以進行驗證。現在檢查端口是否已保留。打開命令提示符，然後輸入
+# **錯誤排除**
+```
 docker: Error response from daemon: 
 Ports are not available: listen tcp 0.0.0.0:1433: 
 bind: An attempt was made to access a socket in a way forbidden by its access permissions.
+```
 
-- 查看port號
+## hyper-v會吃到1433，先關掉hyper-v，保留Port號再啟動hyper-v讓他配號
+
+- 查看port號指令
 ```
 netsh int ipv4 show excludedportrange protocol=tcp
 ```
 
-- 此處列出的端口由hyper-v管理，此處刪除端口1433的唯一方法是禁用hyper-v，保留端口1433，以便hyper-v不會將其保留回去。
-dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
-- hyper-v會吃到1433，先關掉hyper-v，保留Port號再啟動hyper-v讓他配號，windows版本不一樣Hyper-V的名稱不同
 ######查看可用功能。
 ```
 dism /Online  /Get-Features 
 ```
-######比如我的功能就叫 HypervisorPlatform && VirtualMachinePlatform
+###### windows版本不一樣Hyper-V的名稱不同，比如我的功能就叫 HypervisorPlatform && VirtualMachinePlatform
 ```
 dism.exe /Online /Disable-Feature:HypervisorPlatform
 dism.exe /Online /Disable-Feature:VirtualMachinePlatform
 ```
-######或者win+R打開開啟指令optionalfeatures，進去把這兩個功能關掉
+###### 或者win+R打開開啟指令optionalfeatures，進去把這兩個功能關掉
  
 
 - 保留端口1433
