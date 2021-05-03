@@ -1,10 +1,10 @@
 # **docker create ms sql-server**
 
-*1.尋找image : 
- *    docker search mssql
+- 1.尋找image: 
+    docker search mssql
 
-第二步 pull image : docker pull
-docker pull microsoft/mssql-server-linux
+- 2.下載image(這邊使用linux mssql-server):
+    docker pull microsoft/mssql-server-linux
 
 第三步 查看image：docker images
 docker images
