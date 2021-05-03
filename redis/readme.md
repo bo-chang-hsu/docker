@@ -32,6 +32,5 @@ Ping
 ```
 
 ###### 更多應用可以參考以以下網址
-```
 https://jed1978.github.io/2018/05/11/Redis-Programming-CSharp-Basic-1.html
-```
+
