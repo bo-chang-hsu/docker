@@ -46,6 +46,9 @@ source ~/.bashrc
 sqlcmd -S localhost -U SA -P 'password'
 ```
 
+- 使用SSMS連線，我也不知道為什麼別人要port號我不用，弄了很久
+![Docker 安裝MS-SQL-Server 大功告成](https://github.com/bo-chang-hsu/docker/blob/main/mssql-server/%E9%80%A3%E7%B7%9A%E7%95%AB%E9%9D%A2.png)
+
 ___
 
 # **錯誤排除**
@@ -62,7 +65,7 @@ bind: An attempt was made to access a socket in a way forbidden by its access pe
 netsh int ipv4 show excludedportrange protocol=tcp
 ```
 
-######查看可用功能。
+- 查看可用功能。
 ```
 dism /Online  /Get-Features 
 ```
