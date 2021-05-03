@@ -2,22 +2,25 @@
 
 - 尋找image: 
 ```
-    docker search mssql
+docker search mssql
 ```
 - 下載image(這邊使用linux mssql-server):
 ```
-    docker pull microsoft/mssql-server-linux
+docker pull microsoft/mssql-server-linux
 ```
-第三步 查看image：docker images
+- 查看image
+```
 docker images
+```
 
-第四步 建立Container：docker run
+- 建立Container：
+```
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=密碼" -p 1433:1433 --name sql-server -d microsoft/mssql-server-linux
-
--e ACCEPT_EULA=Y : 設定環境中授權條款同意書 ( Y )
--e "MSSQL_SA_PASSWORD
--p 1433:1433 ：設定連線阜號，第一個是你本機的，另外一個是Container的
--d microsoft/mssql-server-linux：-d 是run container background 好了之後show container ID，後面的是IMAGE名稱
+```
+	- -e ACCEPT_EULA=Y : 設定環境中授權條款同意書(Y)
+	- -e MSSQL_SA_PASSWORD : 密碼
+	- -p 1433:1433 ：設定連線阜號，第一個是你本機的，另外一個是Container的
+	- -d microsoft/mssql-server-linux：-d 是run container background 好了之後show container ID，後面的是IMAGE名稱
 
 第五步 查看Container：docker ps
 docker ps
